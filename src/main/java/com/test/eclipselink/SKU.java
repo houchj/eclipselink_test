@@ -2,6 +2,7 @@ package com.test.eclipselink;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +18,8 @@ public class SKU {
 	@Column
 	private String code;
 
-	@ManyToOne
-    @JoinColumn(name = "product_Id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "product_Id", nullable = false)
 	private Product product;
 
 	public Long getId() {

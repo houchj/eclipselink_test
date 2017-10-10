@@ -49,6 +49,7 @@ public class Main {
 		
 		em.close();
 		
+		System.out.println("start to load all SKUs ################################");
 		
 		em = factory.createEntityManager();
 		q = em.createQuery("select t from SKU t");
