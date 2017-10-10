@@ -30,6 +30,34 @@ public class Main {
 		em.persist(todo);
 		em.getTransaction().commit();
 
+		//test for the product sku test case
+		em.getTransaction().begin();
+		Product p1 = new Product();
+		p1.setCode("product1");		
+		SKU s1 = new SKU();
+		s1.setCode("sku1");
+		s1.setProduct(p1);
+		SKU s2 = new SKU();
+		s2.setCode("sku2");
+		s2.setProduct(p1);
+		
+		p1.getSkus().add(s1);
+		p1.getSkus().add(s2);
+		
+		em.persist(p1);
+		em.getTransaction().commit();
+		
+		em.close();
+		
+		
+		em = factory.createEntityManager();
+		q = em.createQuery("select t from SKU t");
+		List<SKU> skus = q.getResultList();
+		for (SKU sku : skus) {
+			System.out.println(sku);
+		}
+		System.out.println("SKU Size: " + skus.size());
+		
 		em.close();
 	}
 }
