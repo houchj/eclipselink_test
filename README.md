@@ -1,2 +1,2 @@
-# spring_module
-support define spring modules that are separate with each other, but can still run in a JVM. 
+# eclipse link test
+test dynamic and static weaving of eclipse link, and so test the performance of many-to-one auto load one side issue.
